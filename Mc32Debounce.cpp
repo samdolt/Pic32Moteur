@@ -24,7 +24,7 @@
 #include "Mc32Debounce.h"
 
 // constante comptage stabilité de l'anti-rebond
-const uint8 MaxDebounceCount = 5;
+const uint8_t MaxDebounceCount = 5;
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // POUR CHAQUE SWITCH DONT ON VEUT EFFECTUER L'ANTI-REBOND DANS L'APPLICATION.
@@ -50,9 +50,9 @@ const uint8 MaxDebounceCount = 5;
 //           si elle l'utilise
 //
 
-void DoDebounce (S_SwitchDescriptor *Descriptor, uint8 InputValue)
+void DoDebounce (S_SwitchDescriptor *Descriptor, uint8_t InputValue)
 {
-   uint8 PrevInputValue;
+   uint8_t PrevInputValue;
    s_bits tmp;
    
    tmp = Descriptor->bits;
@@ -112,17 +112,17 @@ void DebounceInit (S_SwitchDescriptor *pDescriptor) {
 }
 
 //  DebounceGetInput  fourni l'état du switch aprés anti-rebond
-uint8 DebounceGetInput (S_SwitchDescriptor *pDescriptor) {
+uint8_t DebounceGetInput (S_SwitchDescriptor *pDescriptor) {
    return (pDescriptor->bits.KeyValue);
 }
 
 //  DebounceIsPressed    true indique que l'on vient de presser la touche
-uint8 DebounceIsPressed (S_SwitchDescriptor *pDescriptor) {
+uint8_t DebounceIsPressed (S_SwitchDescriptor *pDescriptor) {
    return (pDescriptor->bits.KeyPressed);
 }
 
 //  DebounceIsReleased   true indique que l'on vient de relacher la touche
-uint8 DebounceIsReleased (S_SwitchDescriptor *pDescriptor) {
+uint8_t DebounceIsReleased (S_SwitchDescriptor *pDescriptor) {
    return (pDescriptor->bits.KeyReleased);
 }
 

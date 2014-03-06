@@ -25,7 +25,7 @@
 //
 //---------------------------------------------------------------------------
 
-#include "Type_Def32.h"
+#include <cstdint>
 
 // définitions des types qui seront utilisés dans cette application
 
@@ -37,16 +37,16 @@ typedef enum {
 
 // New
 typedef struct {
-   uint8  KeyPressed :1;              // événement touche pressée
-   uint8  KeyReleased : 1;             // événement touche relachée
-   uint8  KeyPrevInputValue : 1;       // valeur précédente de la touche
-   uint8  KeyValue : 1;                // valeur finale (image) de la touche
+   uint8_t  KeyPressed :1;              // événement touche pressée
+   uint8_t  KeyReleased : 1;             // événement touche relachée
+   uint8_t  KeyPrevInputValue : 1;       // valeur précédente de la touche
+   uint8_t  KeyValue : 1;                // valeur finale (image) de la touche
  } s_bits;
 
 // structure du descripteur
 typedef struct {
            E_DebouceStates DebounceState;    // état de l'antirebond
-           uint8     DebounceCounter;         // compteur
+           uint8_t     DebounceCounter;         // compteur
            s_bits bits;
 } S_SwitchDescriptor;
 
@@ -74,7 +74,7 @@ typedef struct {
 //           si elle l'utilise
 //
 
-void DoDebounce (S_SwitchDescriptor *Descriptor, uint8 InputValue);
+void DoDebounce (S_SwitchDescriptor *Descriptor, uint8_t InputValue);
 
 
 /********************************************************************************************/
@@ -88,13 +88,13 @@ void DoDebounce (S_SwitchDescriptor *Descriptor, uint8 InputValue);
 void DebounceInit (S_SwitchDescriptor *pDescriptor);
 
 //  DebounceGetInput  fourni l'état du switch aprés anti-rebond
-uint8 DebounceGetInput (S_SwitchDescriptor *pDescriptor);
+uint8_t DebounceGetInput (S_SwitchDescriptor *pDescriptor);
 
 //  DebounceIsPressed    true indique que l'on vient de presser la touche
-uint8 DebounceIsPressed (S_SwitchDescriptor *pDescriptor);
+uint8_t DebounceIsPressed (S_SwitchDescriptor *pDescriptor);
 
 //  DebounceIsReleased   true indique que l'on vient de relacher la touche
-uint8 DebounceIsReleased (S_SwitchDescriptor *pDescriptor);
+uint8_t DebounceIsReleased (S_SwitchDescriptor *pDescriptor);
 
 //  DebounceClearPressed    annule indication de pression sur la touche
 void DebounceClearPressed  (S_SwitchDescriptor *pDescriptor);

@@ -13,7 +13,7 @@
 // definitions pour XC32
 
 //typedef int1 bool;				// 1 bit flag
-
+/*
 typedef signed char sint8;		// 8 bits signé
 typedef unsigned char uint8;				// 8 bits non signé
 
@@ -22,5 +22,5 @@ typedef unsigned short uint16;			// 16 bits non signé
 
 typedef signed int sint32;	// 32 bits signé
 typedef unsigned int uint32;			// 32 bits non signé
-
+*/
 #endif

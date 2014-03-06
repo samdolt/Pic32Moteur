@@ -49,9 +49,9 @@ void InitADC(void)
 /*--------------------------------------------------------*/
 
 // NoCh 0 ou 1
-uint16 MyReadADC(uint8 NoCh)
+uint16_t MyReadADC(uint8_t NoCh)
 {
-    uint16 result;
+    uint16_t result;
     unsigned int offset;	// Buffer offset to point to the base of the idle buffer
 
     ConvertADC10();
