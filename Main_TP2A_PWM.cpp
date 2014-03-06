@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <plib.h>
+#include <tgmath.h>
 
 #include "SK32MX795F512L.h"
 #include "Mc32Delays.h"
@@ -151,13 +152,10 @@ int main (void){
   TextDisplay lcd = TextDisplay();
 
 
-  lcd.print("Local Settings");
-  lcd.set_cursor(2,1);
-  lcd.print("TP2A PWM 2013-2014");
-  lcd.set_cursor(3,1);
-  lcd.print("Samuel Dolt");
-  lcd.set_cursor(4,1);
-  lcd.print("France Maillard");
+  lcd.print("Local Settings\n");
+  lcd.print("TP2A PWM 2013-2014\n");
+  lcd.print("Samuel Dolt\n");
+  lcd.print("France Maillard\n");
 
   delay_ms(300);
   // enable multi-vector interrupts
@@ -177,10 +175,24 @@ extern "C"
     // Réponse à l'interruption du Timer1 (cycle de 25 ms)
     void __ISR(_TIMER_1_VECTOR, IPL4SOFT) Timer1Handler(void)
     {
+        uint16_t resultat_ad0;
+        uint8_t resultat_unsigned;
+        int8_t resultat_signed;
+
         // Marqueur activité
         LED0_W = 1;
         // clear the interrupt flag
         mT1ClearIntFlag();
+
+        // Lecture de l'ADC sur le canal 0
+        resultat_ad0 = MyReadADC(0);
+
+        // Transformation du resultat en % (ADC 10 Bit)
+        resultat_unsigned = 99* (resultat_ad0 / 1023.0);
+        resultat_signed = 198* (resultat_ad0 / 1023.0) - 99;
+
+        // Calcul valeur du duty cycle
+        SetDCOC2PWM(labs(resultat_signed));
 
         // Execute le traitement complet
         GPWM_DoSettings();

@@ -54,7 +54,7 @@ public:
      * - x : N° de ligne de 1 à 4
      * - y : N° de colonne de 1 à 24
      */
-    void set_cursor(uint8_t x, uint8_t y);
+    int8_t set_cursor(uint8_t x, uint8_t y);
 
     /*
      * Active le rétroéclairage de l'écran
@@ -151,6 +151,16 @@ private:
      * Mode d'affichage actuel
      */
     uint8_t m_display_mode;
+
+    /*
+     * Colonne actuelle
+     */
+    uint8_t m_column;
+
+    /*
+     * Ligne actuelle
+     */
+    uint8_t m_line;
 
 };
 

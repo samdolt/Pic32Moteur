@@ -117,6 +117,7 @@ TextDisplay::TextDisplay() {
     m_display_mode = LCD::ENTRYLEFT | LCD::ENTRYSHIFTDECREMENT;
     command(LCD::ENTRYMODESET | m_display_mode);
 
+    set_cursor(1,1);
     delay_us(40); //ds0066 demande >39us
 }
 
@@ -131,10 +132,10 @@ void TextDisplay::print(const char *ptr_char) {
 void TextDisplay::write(const uint8_t c) {
     switch (c) {
         case '\f':
-            send_byte(1,1);
+            command(LCD::CLEARDISPLAY);
             break;
      	case '\n':
-            set_cursor(1,2);
+            set_cursor(m_line + 1, 1);
             break;
      	case '\b':
             send_byte(0,0x10);
@@ -158,11 +159,46 @@ void TextDisplay::home(void)
   delay_ms(2);
 }
 
-void TextDisplay::set_cursor(uint8_t y, uint8_t x) {
+int8_t TextDisplay::set_cursor(uint8_t y, uint8_t x) {
    uint8_t address;
+
+   // Validation des valeurs
+
+   if(y > 4)
+   {
+       return -1;
+   }
+   else if(y == 0)
+   {
+       return -1;
+   }
+   else
+   {
+       // Ne rien faire
+   }
+
+   if(x > 20)
+   {
+       return -1;
+   }
+   else if(y == 0)
+   {
+       return -1;
+   }
+   else
+   {
+       // Ne rien faire
+   }
+
+   // Sauvegarde
+   m_line = y;
+   m_column = x;
+
+   // Traitement
    address = M_LINES_ADRESS[y];
    address+=x-1;
    send_byte(0,0x80|address);
+
 
 }
 
