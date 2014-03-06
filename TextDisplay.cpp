@@ -158,7 +158,7 @@ void TextDisplay::home(void)
   delay_ms(2);
 }
 
-void TextDisplay::set_cursor(uint8_t x, uint8_t y) {
+void TextDisplay::set_cursor(uint8_t y, uint8_t x) {
    uint8_t address;
    address = M_LINES_ADRESS[y];
    address+=x-1;
