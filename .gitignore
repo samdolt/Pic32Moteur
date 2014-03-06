@@ -216,4 +216,6 @@ pip-log.txt
 
 
 # MPLAB X Project
-*.X/*
+*.X/build/
+*.X/build/dist
+*.X/TpTestKitPic32.map
