@@ -152,9 +152,10 @@ int main (void){
   TextDisplay lcd = TextDisplay();
 
 
-  lcd.print("Local Settings\n");
+  lcd.print("Local Settings------------------------------\n");
   lcd.print("TP2A PWM 2013-2014\n");
   lcd.print("Samuel Dolt\n");
+  lcd.print("France Maillard\n");
   lcd.print("France Maillard\n");
 
   delay_ms(300);

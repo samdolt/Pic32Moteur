@@ -143,6 +143,12 @@ private:
     uint8_t M_LINES_ADRESS[5];
 
     /*
+     * Taille de l'écran
+     */
+    uint8_t M_NUMBER_OF_LINE;
+    uint8_t M_NUMBER_OF_COLUMN;
+
+    /*
      * Paramètres de control actuel
      */
     uint8_t m_display_control;

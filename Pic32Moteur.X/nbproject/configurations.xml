@@ -7,7 +7,6 @@
       <itemPath>../Mc32Debounce.h</itemPath>
       <itemPath>../Mc32Delays.h</itemPath>
       <itemPath>../SK32MX795F512L.h</itemPath>
-      <itemPath>../Type_Def32.h</itemPath>
       <itemPath>../TextDisplay.h</itemPath>
       <itemPath>../Mc32GestADC.h</itemPath>
       <itemPath>../Mc32GestionPWM.h</itemPath>

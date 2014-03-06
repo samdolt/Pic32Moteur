@@ -79,6 +79,8 @@ TextDisplay::TextDisplay() {
     M_LINES_ADRESS[3] = 20;
     M_LINES_ADRESS[4] = 84; // Adresse de la ligne 4
 
+    M_NUMBER_OF_LINE = 4;
+    M_NUMBER_OF_COLUMN = 20;
     
      enable_backlight();
 
@@ -131,26 +133,26 @@ void TextDisplay::print(const char *ptr_char) {
 
 void TextDisplay::write(const uint8_t c) {
     switch (c) {
-        case '\f':
-            command(LCD::CLEARDISPLAY);
-            break;
-     	case '\n':
+        case '\n':
             set_cursor(m_line + 1, 1);
             break;
-     	case '\b':
-            send_byte(0,0x10);
-            break;
         case '\t':
-            // Caractère de tabulation -> quatre espace blanc
-            send_byte(1,' ');
-            send_byte(1,' ');
-            send_byte(1,' ');
-            send_byte(1,' ');
+            if(( m_column <= (M_NUMBER_OF_COLUMN - 4) ) && (m_line <= (M_NUMBER_OF_LINE)) ){
+                // Caractère de tabulation -> quatre espace blanc
+                send_byte(1,' ');
+                send_byte(1,' ');
+                send_byte(1,' ');
+                send_byte(1,' ');
+                m_column += 4;
+            }
             break;
-     	default:
-            send_byte(1,c);
+        default:
+            if( (m_column <= (M_NUMBER_OF_COLUMN) ) && (m_line <= (M_NUMBER_OF_LINE)) ){
+                send_byte(1,c);
+                m_column++;
+            }
             break;
-   }
+    }
 }
 
 void TextDisplay::home(void)
@@ -161,6 +163,10 @@ void TextDisplay::home(void)
 
 int8_t TextDisplay::set_cursor(uint8_t y, uint8_t x) {
    uint8_t address;
+
+  // Sauvegarde
+   m_line = y;
+   m_column = x;
 
    // Validation des valeurs
 
@@ -189,10 +195,6 @@ int8_t TextDisplay::set_cursor(uint8_t y, uint8_t x) {
    {
        // Ne rien faire
    }
-
-   // Sauvegarde
-   m_line = y;
-   m_column = x;
 
    // Traitement
    address = M_LINES_ADRESS[y];
