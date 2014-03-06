@@ -151,17 +151,21 @@ int main (void){
   TextDisplay lcd = TextDisplay();
 
 
-  lcd.print("TP2A PWM     ");
-  lcd.set_cursor(1,2);
-  lcd.print("SLO2 2013-2014");
-  lcd.set_cursor(1,3);
-  lcd.print("C. Huber");
+  lcd.print("Local Settings");
+  lcd.set_cursor(2,1);
+  lcd.print("TP2A PWM 2013-2014");
+  lcd.set_cursor(3,1);
+  lcd.print("Samuel Dolt");
+  lcd.set_cursor(4,1);
+  lcd.print("France Maillard");
 
+  delay_ms(300);
   // enable multi-vector interrupts
   INTEnableSystemMultiVectoredInt();
 
   while(1){
     // Ne rien faire (juste un comptage)
+    lcd.clear();
     compteurMain++;
   }
   return 0;
