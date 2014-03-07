@@ -152,11 +152,10 @@ int main (void){
   TextDisplay lcd = TextDisplay();
 
 
-  lcd.print("Local Settings------------------------------\n");
-  lcd.print("TP2A PWM 2013-2014\n");
-  lcd.print("Samuel Dolt\n");
-  lcd.print("France Maillard\n");
-  lcd.print("France Maillard\n");
+  lcd << "LCD C++ avec Stream" << endl;
+  lcd << "Hex : " << convert::to_hex(3452) << endl;
+  lcd << "Dec : " << 3452 << endl;
+
 
   delay_ms(300);
   // enable multi-vector interrupts
@@ -164,7 +163,6 @@ int main (void){
 
   while(1){
     // Ne rien faire (juste un comptage)
-    lcd.clear();
     compteurMain++;
   }
   return 0;

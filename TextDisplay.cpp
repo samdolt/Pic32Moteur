@@ -131,6 +131,39 @@ void TextDisplay::print(const char *ptr_char) {
     }
 }
 
+void TextDisplay::print(const int32_t number)
+{
+    print(convert::to_dec(number));
+}
+
+void TextDisplay::print(const convert_s data )
+{
+        char str[15];
+        switch(data.base){
+            case 10:
+                sprintf(str, "%d", data.number);
+                break;
+            case 16:
+                sprintf(str, "%X", data.number);
+                break;
+            default:
+                str[0] = '\0';
+                break;
+        }
+        print(str);
+}
+
+void TextDisplay::print(enum stream_symbol symbol)
+{
+    switch(symbol){
+        case endl:
+            write('\n');
+            break;
+        default:
+            break;
+    }
+}
+
 void TextDisplay::write(const uint8_t c) {
     switch (c) {
         case '\n':
@@ -361,6 +394,27 @@ char TextDisplay::read( uint8_t x, uint8_t y)
     return(value);
 }
 
+
+/******************************************************************************
+ * GESTION DES CONVERSIONS
+ ******************************************************************************/
+namespace convert {
+    convert_s  to_dec(int32_t number)
+    {
+        convert_s data;
+        data.base = 10;
+        data.number = number;
+        return data;
+    }
+
+    convert_s  to_hex(int32_t number)
+    {
+        convert_s data;
+        data.base = 16;
+        data.number = number;
+        return data;
+    }
+}
 
 /******************************************************************************
  * LICENSE

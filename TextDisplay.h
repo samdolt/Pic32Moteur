@@ -18,6 +18,21 @@
 #include <cstdint>
 #include <cstdio>
 
+/*
+ * Structure permettant de définir un nombre et la base dans lequel on
+ * veut l'afficher
+ */
+typedef struct{
+    uint8_t base;
+    int32_t number;
+}convert_s;
+
+/*
+ * Permet l'utilisation du code endl
+ */
+enum stream_symbol {
+    endl
+};
 
 /*
  * Classe représentant l'écran LCD. Pour l'instant la classe se base
@@ -38,6 +53,9 @@ public:
      * Aucun formatage n'est effectué
      */
     void print(const char *ptr_char);
+    void print(const int32_t number);
+    void print(const convert_s data );
+    void print(enum stream_symbol symbol);
 
     /*
      *  write écrit un caractère sur l'écran
@@ -170,6 +188,25 @@ private:
 
 };
 
+/******************************************************************************
+ * STREAM SUPPORT
+ ******************************************************************************/
+
+/* Template générique, redirige l'opérateur lcd << vers lcd.print pour tous les
+ * type
+ */
+template<class T>
+inline TextDisplay &operator <<(TextDisplay &stream, const T data)
+{ stream.print(data); return stream; }
+
+/******************************************************************************
+ * GESTION DES CONVERSIONS
+ ******************************************************************************/
+
+namespace convert {
+    convert_s to_dec(int32_t number);
+    convert_s to_hex(int32_t number);
+}
 /******************************************************************************
  * LICENSE
  ******************************************************************************/
