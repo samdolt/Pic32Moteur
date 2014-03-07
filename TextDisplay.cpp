@@ -186,6 +186,11 @@ void TextDisplay::write(const uint8_t c) {
             }
             break;
     }
+
+    if(m_column > 20)
+    {
+        m_column = 21;
+    }
 }
 
 void TextDisplay::home(void)
@@ -205,6 +210,8 @@ int8_t TextDisplay::set_cursor(uint8_t y, uint8_t x) {
 
    if(y > 4)
    {
+       m_line = 4;
+       m_column = 21;
        return -1;
    }
    else if(y == 0)
