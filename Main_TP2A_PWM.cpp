@@ -111,6 +111,9 @@ int compteurMain;
 #define VAL_PR4 (40.0 / T4_TICK)
 
 
+volatile int32_t line2 = 0;
+volatile uint32_t line3 = 0;
+
 //=====================================----------------------------------------
 // fonction main
 //=====================================----------------------------------------
@@ -158,17 +161,21 @@ int main (void){
   lcd << "France Maillard" << endl;
 
   delay_ms(3000);
+  lcd.clear();
   // enable multi-vector interrupts
   INTEnableSystemMultiVectoredInt();
 
   while(1){
     // Ne rien faire (juste un comptage)
-
     compteurMain++;
     LED2_W = 1;
     delay_ms(1000);
     LED2_W = 0;
     delay_ms(1000);
+
+    lcd.set_cursor(2,1);
+    lcd << "Vsignee :" << line2 << endl;
+    lcd << "Vnon_signee :" << line3 << endl;
   }
   return 0;
 }  // End main
@@ -192,8 +199,8 @@ extern "C"
         resultat_ad0 = MyReadADC(0);
 
         // Transformation du resultat en % (ADC 10 Bit)
-        resultat_unsigned = 99* (resultat_ad0 / 1023.0);
-        resultat_signed = 198* (resultat_ad0 / 1023.0) - 99;
+        line2 = 99* (resultat_ad0 / 1023.0);
+        line3 = 198* (resultat_ad0 / 1023.0) - 99;
 
         // Calcul valeur du duty cycle
         SetDCOC2PWM(labs(resultat_signed));
@@ -201,9 +208,7 @@ extern "C"
         // Execute le traitement complet
         GPWM_DoSettings();
         //Affichage des valeurs de la vitesse
-        lcd.set_cursor(2,1);
-        lcd << "Vitesse signée :" << resultat_signed << endl;
-        lcd << "Vitesse non signée :" << resultat_unsigned << endl;
+        
         // Marqueur activité
         LED0_W = 0;
     } // End T1 ISR
