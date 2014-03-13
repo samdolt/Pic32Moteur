@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="PIC32_Cpp" displayName="PIC32_Cpp" projectFiles="true">
+        <itemPath>../lib/PIC32_Cpp/Delay.h</itemPath>
+        <itemPath>../lib/PIC32_Cpp/Key.h</itemPath>
+        <itemPath>../lib/PIC32_Cpp/Port.h</itemPath>
+        <itemPath>../lib/PIC32_Cpp/TextDisplay.h</itemPath>
+      </logicalFolder>
       <itemPath>../Mc32Debounce.h</itemPath>
       <itemPath>../Mc32Delays.h</itemPath>
       <itemPath>../SK32MX795F512L.h</itemPath>
