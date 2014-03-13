@@ -113,6 +113,8 @@ int compteurMain;
 
 volatile int32_t line2 = 0;
 volatile uint32_t line3 = 0;
+volatile int32_t line4 = 0;
+volatile uint16_t PulseStopOC3 = 0;
 
 //=====================================----------------------------------------
 // fonction main
@@ -124,7 +126,7 @@ int main (void){
   // memory wait states fine tuning
   // TO BE CHECKED
   //SYSTEMConfigPerformance(SYS_FREQ);
-  int Pb_Freq = SYSTEMConfigPerformance(SYS_FREQ);
+  int Pb_freq = SYSTEMConfigPerformance(SYS_FREQ);
   // Etablit PB_CLOCK à 4 MHz
    
   // Default SK32MX775F512L i/os config and values
@@ -176,6 +178,7 @@ int main (void){
     lcd.set_cursor(2,1);
     lcd << "Vsignee :" << line2 << endl;
     lcd << "Vnon_signee :" << line3 << endl;
+    lcd << "Angle :" << line4 << endl;
   }
   return 0;
 }  // End main
@@ -186,9 +189,8 @@ extern "C"
     // Réponse à l'interruption du Timer1 (cycle de 25 ms)
     void __ISR(_TIMER_1_VECTOR, IPL4SOFT) Timer1Handler(void)
     {
-        uint16_t resultat_ad0;
-        uint8_t resultat_unsigned;
-        int8_t resultat_signed;
+        uint16_t resultat_ad0, resultat_ad1;
+        uint8_t ValDegre;
 
         // Marqueur activité
         LED0_W = 1;
@@ -203,11 +205,22 @@ extern "C"
         line3 = 198* (resultat_ad0 / 1023.0) - 99;
 
         // Calcul valeur du duty cycle
-        SetDCOC2PWM(labs(resultat_signed));
+        SetDCOC2PWM(labs(line2));
 
         // Execute le traitement complet
         GPWM_DoSettings();
-        //Affichage des valeurs de la vitesse
+        //traitement AD canal 1
+            //lecture de l'AD canal 1
+            resultat_ad1 = MyReadADC(1);
+
+            //Calcul de 0 à 180
+            ValDegre = (resultat_ad1/1023) * 180;
+
+            //Determiner la pulse_stop pour OC3
+            SetPulseOC1(ValDegre,PulseStopOC3);
+
+            //Transformation de 0 à 180 en -90 à 90
+            line4 = ValDegre - 90;
         
         // Marqueur activité
         LED0_W = 0;
