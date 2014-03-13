@@ -206,6 +206,16 @@ extern "C"
 
         // Calcul valeur du duty cycle
         SetDCOC2PWM(labs(line2));
+        if (line2 < 0)
+        {
+            AIN1_HBRIDGE = 1;
+            AIN2_HBRIDGE = 0;
+        }
+        else
+        {
+            AIN2_HBRIDGE = 1;
+            AIN1_HBRIDGE = 0;
+        }
 
         // Execute le traitement complet
         GPWM_DoSettings();
