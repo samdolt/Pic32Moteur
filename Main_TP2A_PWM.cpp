@@ -163,12 +163,6 @@ int main (void){
 
   while(1){
     // Ne rien faire (juste un comptage)
-      lcd.clear();
-      lcd.set_cursor(1,1);
-    lcd << "ligne 1" << endl;
-    lcd << "ligne 2" << endl;
-    lcd << "ligne 3" << endl;
-    lcd << "ligne 4" << endl;
 
     compteurMain++;
     LED2_W = 1;
@@ -206,7 +200,10 @@ extern "C"
 
         // Execute le traitement complet
         GPWM_DoSettings();
-    
+        //Affichage des valeurs de la vitesse
+        lcd.set_cursor(2,1);
+        lcd << "Vitesse signée :" << resultat_signed << endl;
+        lcd << "Vitesse non signée :" << resultat_unsigned << endl;
         // Marqueur activité
         LED0_W = 0;
     } // End T1 ISR
