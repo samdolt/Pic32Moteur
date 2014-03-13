@@ -14,7 +14,7 @@
 /*--------------------------------------------------------*/
 /* Inclusion des fichies de définition et des librairies
 /*--------------------------------------------------------*/
-#include "p32mx795f512l.h" // processeur
+#include "p32xxxx.h" // processeur
 #include "sk32mx795f512l.h" // définitions des pattes du starter kit
 
 /*--------------------------------------------------------*/

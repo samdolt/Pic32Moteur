@@ -1,0 +1,3 @@
+[submodule "lib/PIC32_Cpp"]
+	path = lib/PIC32_Cpp
+	url = git://github.com/samdolt/PIC32_Cpp.git

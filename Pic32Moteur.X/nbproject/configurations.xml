@@ -7,7 +7,6 @@
       <itemPath>../Mc32Debounce.h</itemPath>
       <itemPath>../Mc32Delays.h</itemPath>
       <itemPath>../SK32MX795F512L.h</itemPath>
-      <itemPath>../TextDisplay.h</itemPath>
       <itemPath>../Mc32GestADC.h</itemPath>
       <itemPath>../Mc32GestionPWM.h</itemPath>
     </logicalFolder>
@@ -18,10 +17,15 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="PIC32_Cpp" displayName="PIC32_Cpp" projectFiles="true">
+        <itemPath>../lib/PIC32_Cpp/Delay.cpp</itemPath>
+        <itemPath>../lib/PIC32_Cpp/Key.cpp</itemPath>
+        <itemPath>../lib/PIC32_Cpp/Port.cpp</itemPath>
+        <itemPath>../lib/PIC32_Cpp/TextDisplay.cpp</itemPath>
+      </logicalFolder>
       <itemPath>../Mc32Debounce.cpp</itemPath>
       <itemPath>../Mc32Delays.cpp</itemPath>
       <itemPath>../SK32MX795F512L.cpp</itemPath>
-      <itemPath>../TextDisplay.cpp</itemPath>
       <itemPath>../Main_TP2A_PWM.cpp</itemPath>
       <itemPath>../Mc32GestADC.cpp</itemPath>
       <itemPath>../Mc32GestionPWM.cpp</itemPath>
@@ -143,8 +147,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories"
-                  value="..\..\..\..\..\..\..\..\Program Files (x86)\Microchip\xc32\v1.31\pic32mx\include\proc"/>
+        <property key="extra-include-directories" value="..\lib\PIC32_Cpp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
