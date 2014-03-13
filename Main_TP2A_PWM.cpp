@@ -176,9 +176,9 @@ int main (void){
     delay_ms(1000);
 
     lcd.set_cursor(2,1);
-    lcd << "Vsignee :" << line2 << endl;
-    lcd << "Vnon_signee :" << line3 << endl;
-    lcd << "Angle :" << line4 << endl;
+    lcd << "Vsignee :" << line2 << "    " << endl;
+    lcd << "Vnon_signee :" << line3 << "    "  << endl;
+    lcd << "Angle :" << line4 << "    " << endl;
   }
   return 0;
 }  // End main
@@ -202,7 +202,7 @@ extern "C"
 
         // Transformation du resultat en % (ADC 10 Bit)
         line2 = 99* (resultat_ad0 / 1023.0);
-        line3 = 198* (resultat_ad0 / 1023.0) - 99;
+        line3 = (198* (resultat_ad0 / 1023.0)) - 99;
 
         // Calcul valeur du duty cycle
         SetDCOC2PWM(labs(line2));
@@ -214,7 +214,7 @@ extern "C"
             resultat_ad1 = MyReadADC(1);
 
             //Calcul de 0 à 180
-            ValDegre = (resultat_ad1/1023) * 180;
+            ValDegre = (resultat_ad1 / 1023.0) * 180;
 
             //Determiner la pulse_stop pour OC3
             SetPulseOC1(ValDegre,PulseStopOC3);
