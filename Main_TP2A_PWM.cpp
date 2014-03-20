@@ -100,12 +100,20 @@ int compteurMain;
 // #define PB_FREQ (SYS_FREQ / PB_DIV)
 #define PB_FREQ (SYS_FREQ / PB_DIV)
 
+//Timer1
 #define PRESCALE 256
 #define T1_TICK ((1000000.0 * PRESCALE)/PB_FREQ) // en us
 // 25 ms => 25'000 us
 #define VAL_PR1 (25000 / T1_TICK)
 
-#define PRESCALE_4 1
+//Timer3
+#define PRESCALE_3 64
+#define T3_TICK ((1000000.0 * PRESCALE_3)/PB_FREQ) // en us
+ //7 ms => 7'000 us
+#define VAL_PR3 (7000 / T3_TICK)
+
+//Timer4
+#define PRESCALE_4 256
 #define T4_TICK ((1000000.0 * PRESCALE_4)/PB_FREQ) // en us
 // 40 us
 #define VAL_PR4 (40.0 / T4_TICK)
@@ -138,10 +146,12 @@ int main (void){
   // Set up the timer interrupt with a priority of 4
   ConfigIntTimer1(T1_INT_ON | T1_INT_PRIOR_4);
 
+
+
  // Configuration Timer4 cycle 40 us
  // Internal clock, Prescaler 1
 
-  OpenTimer4(T4_ON | T4_SOURCE_INT | T4_PS_1_1, VAL_PR4);
+  OpenTimer4(T4_ON | T4_SOURCE_INT | T4_PS_1_256, VAL_PR4);
 
   // Set up the timer4 interrupt with a priority of 4 (provisoir)
   ConfigIntTimer4(T4_INT_ON | T4_INT_PRIOR_4);
@@ -170,14 +180,12 @@ int main (void){
   while(1){
     // Ne rien faire (juste un comptage)
     compteurMain++;
-    LED2_W = 1;
-    delay_ms(1000);
-    LED2_W = 0;
-    delay_ms(1000);
 
     lcd.set_cursor(2,1);
+
     lcd << "Vsignee :" << line2 << "    " << endl;
-    lcd << "Vnon_signee :" << line3 << "    "  << endl;
+     lcd << "Vnon_signee :" << line3 << "    "  << endl;
+
     lcd << "Angle :" << line4 << "    " << endl;
   }
   return 0;
@@ -201,22 +209,25 @@ extern "C"
         resultat_ad0 = MyReadADC(0);
 
         // Transformation du resultat en % (ADC 10 Bit)
-        line2 = 99* (resultat_ad0 / 1023.0);
-        line3 = (198* (resultat_ad0 / 1023.0)) - 99;
+        line3 = 99* (resultat_ad0 / 1023.0);
+        line2 = (198* (resultat_ad0 / 1023.0)) - 99;
 
         // Calcul valeur du duty cycle
-        SetDCOC2PWM(labs(line2));
+        SetDCOC2PWM(labs(line2) * ((25 * 80) / 100));
+
+        //STBY_HBridge = 1;
         if (line2 < 0)
         {
-            AIN1_HBRIDGE = 1;
-            AIN2_HBRIDGE = 0;
+            AIN1_HBRIDGE = 1; // RD12
+            AIN2_HBRIDGE = 0; // RD13
         }
         else
         {
             AIN2_HBRIDGE = 1;
             AIN1_HBRIDGE = 0;
         }
-
+        
+        
         // Execute le traitement complet
         GPWM_DoSettings();
         //traitement AD canal 1
@@ -227,7 +238,7 @@ extern "C"
             ValDegre = (resultat_ad1 / 1023.0) * 180;
 
             //Determiner la pulse_stop pour OC3
-            SetPulseOC1(ValDegre,PulseStopOC3);
+           SetPulseOC3((7000-(ValDegre*10+600))/T3_TICK, 0);
 
             //Transformation de 0 à 180 en -90 à 90
             line4 = ValDegre - 90;

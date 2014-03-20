@@ -164,13 +164,13 @@ void SK32MX795F512L_IO_Default(void)
 	/* Pont en H
 	/*--------------------------------------------------------*/
 	// Par sécurité, on met tout en entrée au départ 
-	TRISCbits.TRISC13 = 1; //STBY_HBRIDGE en entrée
-	TRISDbits.TRISD12 = 1; //AIN1_HBRIDGE en entrée
-	TRISDbits.TRISD13 = 1; //AIN2_HBRIDGE en entrée
-	TRISDbits.TRISD1 = 1; //PWMA_HBRIDGE en entrée
-	TRISCbits.TRISC1 = 1; //BIN1_HBRIDGE en entrée
-	TRISCbits.TRISC2 = 1; //BIN2_HBRIDGE en entrée
-	TRISDbits.TRISD2 = 1; //PWMB_HBRIDGE en entrée
+	TRISCbits.TRISC13 = 0; //STBY_HBRIDGE en entrée
+	TRISDbits.TRISD12 = 0; //AIN1_HBRIDGE en entrée
+	TRISDbits.TRISD13 = 0; //AIN2_HBRIDGE en entrée
+	TRISDbits.TRISD1 = 0; //PWMA_HBRIDGE en entrée
+	TRISCbits.TRISC1 = 0; //BIN1_HBRIDGE en entrée
+	TRISCbits.TRISC2 = 0; //BIN2_HBRIDGE en entrée
+	TRISDbits.TRISD2 = 0; //PWMB_HBRIDGE en entrée
 	
 	/*--------------------------------------------------------*/
 	/* XBee

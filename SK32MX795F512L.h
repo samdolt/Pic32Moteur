@@ -205,13 +205,13 @@
 /*--------------------------------------------------------*/
 /* Ponts en H
 /*--------------------------------------------------------*/
-#define STBY_HBRIDGE	PORTCbits.RC13
-#define AIN1_HBRIDGE	PORTDbits.RD12
-#define AIN2_HBRIDGE	PORTDbits.RD13
-#define PWMA_HBRIDGE	PORTDbits.RD1
-#define BIN1_HBRIDGE	PORTCbits.RC1
-#define BIN2_HBRIDGE	PORTCbits.RC2
-#define PWMB_HBRIDGE	PORTDbits.RD2
+#define STBY_HBRIDGE	LATCbits.LATC13
+#define AIN1_HBRIDGE	LATDbits.LATD12
+#define AIN2_HBRIDGE	LATDbits.LATD13
+#define PWMA_HBRIDGE	LATDbits.LATD1
+#define BIN1_HBRIDGE	LATCbits.LATC1
+#define BIN2_HBRIDGE	LATCbits.LATC2
+#define PWMB_HBRIDGE	LATDbits.LATD2
 
 /*--------------------------------------------------------*/
 /* XBee
