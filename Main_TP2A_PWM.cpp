@@ -77,6 +77,9 @@ int cpt;
 char stringaff[20] = {"Test Int & Timer1"};
 int ChenillardPhase = 0;
 int compteurMain;
+uint8_t Compt_4ms;
+
+
 
 //=====================================----------------------------------------
 // prototypes (nécessaires si des fonctions sont appelées avant d'être définies,
@@ -154,7 +157,7 @@ int main (void){
   OpenTimer4(T4_ON | T4_SOURCE_INT | T4_PS_1_256, VAL_PR4);
 
   // Set up the timer4 interrupt with a priority of 4 (provisoir)
-  ConfigIntTimer4(T4_INT_ON | T4_INT_PRIOR_4);
+  ConfigIntTimer4(T4_INT_ON | T4_INT_PRIOR_6);
 
   // Initialisation timer et OCx pour PWM
   GPWM_InitTimerAndOCx();
@@ -187,6 +190,8 @@ int main (void){
      lcd << "Vnon_signee :" << line3 << "    "  << endl;
 
     lcd << "Angle :" << line4 << "    " << endl;
+
+    delay_ms(100);
   }
   return 0;
 }  // End main
@@ -209,13 +214,14 @@ extern "C"
         resultat_ad0 = MyReadADC(0);
 
         // Transformation du resultat en % (ADC 10 Bit)
-        line3 = 99* (resultat_ad0 / 1023.0);
+        //line3 = 99* (resultat_ad0 / 1023.0);
         line2 = (198* (resultat_ad0 / 1023.0)) - 99;
+        line3 = abs(line2);
 
         // Calcul valeur du duty cycle
-        SetDCOC2PWM(labs(line2) * ((25 * 80) / 100));
+        SetDCOC2PWM(abs(line2) * ((25 * 80) / 100));
 
-        //STBY_HBridge = 1;
+        STBY_HBRIDGE = 1;
         if (line2 < 0)
         {
             AIN1_HBRIDGE = 1; // RD12
@@ -248,7 +254,7 @@ extern "C"
     } // End T1 ISR
 
     // Réponse à l'interruption du Timer4 (cycle 40 us)
-    void __ISR(_TIMER_4_VECTOR, IPL4SOFT) Timer4Handler(void)
+    void __ISR(_TIMER_4_VECTOR, IPL6SOFT) Timer4Handler(void)
     {
         // Marqueur activité
         LED1_W = 1;
@@ -257,7 +263,19 @@ extern "C"
 
         // Traitement PWM software
         GPWM_DoPWMSoftware();
-    
+        Compt_4ms ++;
+        if (Compt_4ms >= 99)
+        {
+            Compt_4ms = 0;
+            LED2_W = 1;
+        }
+        else if (Compt_4ms == (uint8_t) line3)
+        {
+            LED2_W = 0;
+        }
+
+
+
         // Marqueur activité
         LED1_W = 0;
     }

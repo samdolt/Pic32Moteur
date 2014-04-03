@@ -205,7 +205,7 @@
 /*--------------------------------------------------------*/
 /* Ponts en H
 /*--------------------------------------------------------*/
-#define STBY_HBRIDGE	LATCbits.LATC13
+#define STBY_HBRIDGE	LATBbits.LATB8
 #define AIN1_HBRIDGE	LATDbits.LATD12
 #define AIN2_HBRIDGE	LATDbits.LATD13
 #define PWMA_HBRIDGE	LATDbits.LATD1

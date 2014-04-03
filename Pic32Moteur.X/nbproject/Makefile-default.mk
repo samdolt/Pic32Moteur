@@ -74,7 +74,7 @@ FIXDEPS=fixDeps
 .build-conf:  ${BUILD_SUBPROJECTS}
 	${MAKE} ${MAKE_OPTIONS} -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/Pic32Moteur.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
-MP_PROCESSOR_OPTION=32MX775F512L
+MP_PROCESSOR_OPTION=32MX795F512L
 MP_LINKER_FILE_OPTION=
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
