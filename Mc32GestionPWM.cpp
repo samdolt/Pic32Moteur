@@ -11,6 +11,28 @@
 #include "Mc32GestionPWM.h"
 #include <plib.h>       // peripheral lib
 #include "Mc32GestADC.h"
+#include "SK32MX795F512L.h"
+#include <stdlib.h>
+#include "Mc32gest_RS232.h"
+
+//copie des inclues du main
+#include <GenericTypeDefs.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <plib.h>
+#include <tgmath.h>
+
+#include "SK32MX795F512L.h"
+#include "Mc32Delays.h"
+#include "TextDisplay.h"
+#include "Mc32GestionPWM.h"
+#include "Mc32GestADC.h"
+#include "GesFifoTh32.h"
+#include "Mc32CalCrc16.h"
+#include "Mc32Debounce.h"
+#include "Mc32gest_RS232.h"
+
+
 
 #define SYS_FREQ (80000000L)    //80 MHz
 #define PB_DIV 1
@@ -55,8 +77,14 @@ void GPWM_InitTimerAndOCx(void)
 
 void GPWM_DoSettings(void )
 {
-   
+    CommStat = GetMessage(&Txline3, Txline4);
+    if (CommStat ==0)
+    {
+        lcd.set_cursor(1,1);
+        lcd << "Local Settings" << endl;
 
+    }
+    
 } // end GPWM_DoSettings
 
 //***************************************************************************

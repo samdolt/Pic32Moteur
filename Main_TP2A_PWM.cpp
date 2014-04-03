@@ -17,6 +17,10 @@
 #include "TextDisplay.h"
 #include "Mc32GestionPWM.h"
 #include "Mc32GestADC.h"
+#include "GesFifoTh32.h"
+#include "Mc32CalCrc16.h"
+#include "Mc32Debounce.h"
+#include "Mc32gest_RS232.h"
 
 //=====================================----------------------------------------
 // Fuses configuration
@@ -79,6 +83,7 @@ int ChenillardPhase = 0;
 int compteurMain;
 uint8_t Compt_4ms;
 
+uint16_t ValCrc16 = 0xFFFF;
 
 
 //=====================================----------------------------------------
@@ -162,6 +167,9 @@ int main (void){
   // Initialisation timer et OCx pour PWM
   GPWM_InitTimerAndOCx();
 
+  //initialisation RS232
+  InitComm();
+
   // Init AD
   InitADC();
   
@@ -217,7 +225,7 @@ extern "C"
         //line3 = 99* (resultat_ad0 / 1023.0);
         line2 = (198* (resultat_ad0 / 1023.0)) - 99;
         line3 = abs(line2);
-
+        Txline3 = line3;
         // Calcul valeur du duty cycle
         SetDCOC2PWM(abs(line2) * ((25 * 80) / 100));
 
@@ -248,7 +256,8 @@ extern "C"
 
             //Transformation de 0 à 180 en -90 à 90
             line4 = ValDegre - 90;
-        
+            Txline4 = line4;
+
         // Marqueur activité
         LED0_W = 0;
     } // End T1 ISR

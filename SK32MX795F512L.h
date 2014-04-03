@@ -1,5 +1,14 @@
 #ifndef __SK32MX795F512L_H
 #define __SK32MX795F512L_H
+
+#include "p32xxxx.h"
+#include <stdlib.h>
+#include <plib.h>
+
+static int CommStat;
+static int Txline4, Rxline4;
+static int Txline3, Rxline3;
+static int Txline2, Rxline2;
 /*--------------------------------------------------------*/
 // Fichier SK32MX795F512L.h
 /*--------------------------------------------------------*/

@@ -15,6 +15,10 @@
       <itemPath>../SK32MX795F512L.h</itemPath>
       <itemPath>../Mc32GestADC.h</itemPath>
       <itemPath>../Mc32GestionPWM.h</itemPath>
+      <itemPath>../GesFifoTh32.h</itemPath>
+      <itemPath>../Mc32CalCrc16.h</itemPath>
+      <itemPath>../Mc32gest_RS232.h</itemPath>
+      <itemPath>../Type_Def32.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -35,6 +39,9 @@
       <itemPath>../Main_TP2A_PWM.cpp</itemPath>
       <itemPath>../Mc32GestADC.cpp</itemPath>
       <itemPath>../Mc32GestionPWM.cpp</itemPath>
+      <itemPath>../GesFifoTh32.cpp</itemPath>
+      <itemPath>../Mc32CalCrc16.cpp</itemPath>
+      <itemPath>../Mc32gest_RS232.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

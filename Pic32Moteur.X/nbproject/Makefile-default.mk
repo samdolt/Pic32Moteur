@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../lib/PIC32_Cpp/Delay.cpp ../lib/PIC32_Cpp/Key.cpp ../lib/PIC32_Cpp/Port.cpp ../lib/PIC32_Cpp/TextDisplay.cpp ../Mc32Debounce.cpp ../Mc32Delays.cpp ../SK32MX795F512L.cpp ../Main_TP2A_PWM.cpp ../Mc32GestADC.cpp ../Mc32GestionPWM.cpp
+SOURCEFILES_QUOTED_IF_SPACED=../lib/PIC32_Cpp/Delay.cpp ../lib/PIC32_Cpp/Key.cpp ../lib/PIC32_Cpp/Port.cpp ../lib/PIC32_Cpp/TextDisplay.cpp ../Mc32Debounce.cpp ../Mc32Delays.cpp ../SK32MX795F512L.cpp ../Main_TP2A_PWM.cpp ../Mc32GestADC.cpp ../Mc32GestionPWM.cpp ../GesFifoTh32.cpp ../Mc32CalCrc16.cpp ../Mc32gest_RS232.cpp
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/329993100/Delay.o ${OBJECTDIR}/_ext/329993100/Key.o ${OBJECTDIR}/_ext/329993100/Port.o ${OBJECTDIR}/_ext/329993100/TextDisplay.o ${OBJECTDIR}/_ext/1472/Mc32Debounce.o ${OBJECTDIR}/_ext/1472/Mc32Delays.o ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o ${OBJECTDIR}/_ext/1472/Mc32GestADC.o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/329993100/Delay.o.d ${OBJECTDIR}/_ext/329993100/Key.o.d ${OBJECTDIR}/_ext/329993100/Port.o.d ${OBJECTDIR}/_ext/329993100/TextDisplay.o.d ${OBJECTDIR}/_ext/1472/Mc32Debounce.o.d ${OBJECTDIR}/_ext/1472/Mc32Delays.o.d ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o.d ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o.d ${OBJECTDIR}/_ext/1472/Mc32GestADC.o.d ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/329993100/Delay.o ${OBJECTDIR}/_ext/329993100/Key.o ${OBJECTDIR}/_ext/329993100/Port.o ${OBJECTDIR}/_ext/329993100/TextDisplay.o ${OBJECTDIR}/_ext/1472/Mc32Debounce.o ${OBJECTDIR}/_ext/1472/Mc32Delays.o ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o ${OBJECTDIR}/_ext/1472/Mc32GestADC.o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o ${OBJECTDIR}/_ext/1472/GesFifoTh32.o ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/329993100/Delay.o.d ${OBJECTDIR}/_ext/329993100/Key.o.d ${OBJECTDIR}/_ext/329993100/Port.o.d ${OBJECTDIR}/_ext/329993100/TextDisplay.o.d ${OBJECTDIR}/_ext/1472/Mc32Debounce.o.d ${OBJECTDIR}/_ext/1472/Mc32Delays.o.d ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o.d ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o.d ${OBJECTDIR}/_ext/1472/Mc32GestADC.o.d ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d ${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/329993100/Delay.o ${OBJECTDIR}/_ext/329993100/Key.o ${OBJECTDIR}/_ext/329993100/Port.o ${OBJECTDIR}/_ext/329993100/TextDisplay.o ${OBJECTDIR}/_ext/1472/Mc32Debounce.o ${OBJECTDIR}/_ext/1472/Mc32Delays.o ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o ${OBJECTDIR}/_ext/1472/Mc32GestADC.o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o
+OBJECTFILES=${OBJECTDIR}/_ext/329993100/Delay.o ${OBJECTDIR}/_ext/329993100/Key.o ${OBJECTDIR}/_ext/329993100/Port.o ${OBJECTDIR}/_ext/329993100/TextDisplay.o ${OBJECTDIR}/_ext/1472/Mc32Debounce.o ${OBJECTDIR}/_ext/1472/Mc32Delays.o ${OBJECTDIR}/_ext/1472/SK32MX795F512L.o ${OBJECTDIR}/_ext/1472/Main_TP2A_PWM.o ${OBJECTDIR}/_ext/1472/Mc32GestADC.o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o ${OBJECTDIR}/_ext/1472/GesFifoTh32.o ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o
 
 # Source Files
-SOURCEFILES=../lib/PIC32_Cpp/Delay.cpp ../lib/PIC32_Cpp/Key.cpp ../lib/PIC32_Cpp/Port.cpp ../lib/PIC32_Cpp/TextDisplay.cpp ../Mc32Debounce.cpp ../Mc32Delays.cpp ../SK32MX795F512L.cpp ../Main_TP2A_PWM.cpp ../Mc32GestADC.cpp ../Mc32GestionPWM.cpp
+SOURCEFILES=../lib/PIC32_Cpp/Delay.cpp ../lib/PIC32_Cpp/Key.cpp ../lib/PIC32_Cpp/Port.cpp ../lib/PIC32_Cpp/TextDisplay.cpp ../Mc32Debounce.cpp ../Mc32Delays.cpp ../SK32MX795F512L.cpp ../Main_TP2A_PWM.cpp ../Mc32GestADC.cpp ../Mc32GestionPWM.cpp ../GesFifoTh32.cpp ../Mc32CalCrc16.cpp ../Mc32gest_RS232.cpp
 
 
 CFLAGS=
@@ -157,6 +157,24 @@ ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o: ../Mc32GestionPWM.cpp  nbproject/Makefi
 	@${RM} ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o ../Mc32GestionPWM.cpp  
 	
+${OBJECTDIR}/_ext/1472/GesFifoTh32.o: ../GesFifoTh32.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/GesFifoTh32.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d" -o ${OBJECTDIR}/_ext/1472/GesFifoTh32.o ../GesFifoTh32.cpp  
+	
+${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o: ../Mc32CalCrc16.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o ../Mc32CalCrc16.cpp  
+	
+${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o: ../Mc32gest_RS232.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o ../Mc32gest_RS232.cpp  
+	
 else
 ${OBJECTDIR}/_ext/329993100/Delay.o: ../lib/PIC32_Cpp/Delay.cpp  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/329993100 
@@ -217,6 +235,24 @@ ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o: ../Mc32GestionPWM.cpp  nbproject/Makefi
 	@${RM} ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32GestionPWM.o ../Mc32GestionPWM.cpp  
+	
+${OBJECTDIR}/_ext/1472/GesFifoTh32.o: ../GesFifoTh32.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/GesFifoTh32.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/GesFifoTh32.o.d" -o ${OBJECTDIR}/_ext/1472/GesFifoTh32.o ../GesFifoTh32.cpp  
+	
+${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o: ../Mc32CalCrc16.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32CalCrc16.o ../Mc32CalCrc16.cpp  
+	
+${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o: ../Mc32gest_RS232.cpp  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CPPC} $(MP_EXTRA_CC_PRE)  -g -x c++ -c -mprocessor=$(MP_PROCESSOR_OPTION)  -frtti -fexceptions -fno-check-new -fenforce-eh-specs -I"../lib/PIC32_Cpp" -MMD -MF "${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o.d" -o ${OBJECTDIR}/_ext/1472/Mc32gest_RS232.o ../Mc32gest_RS232.cpp  
 	
 endif
 
