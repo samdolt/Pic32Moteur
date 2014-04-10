@@ -9,6 +9,7 @@
 #include "Mc32gest_RS232.h"
 #include "SK32MX795F512L.h"
 #include <plib.h>
+#include "Mc32CalCrc16.h"
 
 #define SYS_FREQ (80000000L)    //80 MHz
 #define PB_DIV 1
@@ -44,6 +45,10 @@ typedef struct {
 StruMess TxMess;
 // Struct pour réception des messages
 StruMess RxMess;
+
+volatile uint32_t RemoteSpeed = 0;
+volatile int32_t RemoteAngle = 0;
+volatile int8_t compt_getmessage = 0;
 
 // Declaration des FIFO pour réception et émission
 #define FIFO_RX_SIZE ( (4*5) + 1)  // 4 messages
@@ -196,12 +201,35 @@ void InitComm(void)
 int GetMessage(sint8 *Speed, sint8 *Angle)
 {
     int CommStatus;
-      
+    uint16_t ValCrc16 = 0xFFFF;  
+    
       // Gestion control de flux de la réception
       if(GetWriteSpace ( &descrFifoRX) >= 12) {    // paquet de 6 char
-        //   output_low(RS232_RTS);  // autorise émission par l'autre
-        RS232_RTS = 0;
+         //calcul CRC
+          ValCrc16 = updateCRC16 (ValCrc16, 0xAA);
+          ValCrc16 = updateCRC16 (ValCrc16, *Speed);
+          ValCrc16 = updateCRC16 (ValCrc16, *Angle);
+          
+          if (ValCrc16 == RxMess.Crc16.val)
+          {
+            //   output_low(RS232_RTS);  // autorise émission par l'autre
+            RS232_RTS = 0;
+            CommStatus = 1;
+            compt_getmessage = 0;
+
+            // mise à jour des variable global
+            RemoteSpeed = *Speed;
+            RemoteAngle = *Angle ;
+
+          }
       }
+      compt_getmessage ++;
+      if (compt_getmessage >= 10)
+      {
+          CommStatus = 0;
+      }
+
+
       return CommStatus;
 } // GetCommande
 

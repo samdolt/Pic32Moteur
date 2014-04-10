@@ -48,7 +48,7 @@
  //7 ms => 7'000 us
 #define VAL_PR3 (7000 / T3_TICK)
 
-
+int compteurDoSetting ;
 //***************************************************************************
 // void GPWM_InitTimerAndOCx (void)
 //       Routine effectuant l'initialisation des Timers 2 et 3
@@ -77,11 +77,17 @@ void GPWM_InitTimerAndOCx(void)
 
 void GPWM_DoSettings(void )
 {
-    CommStat = GetMessage(&Txline3, Txline4);
+    //CommStat = GetMessage(&Txline3, &Txline4);
     if (CommStat ==0)
     {
-        lcd.set_cursor(1,1);
-        lcd << "Local Settings" << endl;
+       //lcd.set_cursor(1,1);
+        //lcd << "Local Settings " << endl;
+
+    }
+    else
+    {
+       // lcd.set_cursor(1,1);
+       // lcd << "Remote Settings " << endl;
 
     }
     
@@ -93,6 +99,11 @@ void GPWM_DoSettings(void )
 //
 void GPWM_DoPWMSoftware(void)
 {
+    if ( compteurDoSetting == 10)
+    {
+        SendMessage(LocalSpeed, LocalAngle);
 
-
+        compteurDoSetting = 0;
+    }
+    compteurDoSetting ++;
 } // end GPWM_DoPWMSoftware

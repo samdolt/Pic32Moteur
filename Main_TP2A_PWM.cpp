@@ -11,8 +11,12 @@
 #include <stdlib.h>
 #include <plib.h>
 #include <tgmath.h>
-
 #include "SK32MX795F512L.h"
+#include "p32xxxx.h"
+
+
+
+
 #include "Mc32Delays.h"
 #include "TextDisplay.h"
 #include "Mc32GestionPWM.h"
@@ -20,6 +24,7 @@
 #include "GesFifoTh32.h"
 #include "Mc32CalCrc16.h"
 #include "Mc32Debounce.h"
+
 #include "Mc32gest_RS232.h"
 
 //=====================================----------------------------------------
@@ -82,8 +87,9 @@ char stringaff[20] = {"Test Int & Timer1"};
 int ChenillardPhase = 0;
 int compteurMain;
 uint8_t Compt_4ms;
+volatile uint32_t line3 = 0, LocalSpeed = 0;
+volatile int32_t line4 = 0, LocalAngle = 0;
 
-uint16_t ValCrc16 = 0xFFFF;
 
 
 //=====================================----------------------------------------
@@ -128,9 +134,10 @@ uint16_t ValCrc16 = 0xFFFF;
 
 
 volatile int32_t line2 = 0;
-volatile uint32_t line3 = 0;
-volatile int32_t line4 = 0;
+
 volatile uint16_t PulseStopOC3 = 0;
+
+
 
 //=====================================----------------------------------------
 // fonction main
@@ -224,8 +231,8 @@ extern "C"
         // Transformation du resultat en % (ADC 10 Bit)
         //line3 = 99* (resultat_ad0 / 1023.0);
         line2 = (198* (resultat_ad0 / 1023.0)) - 99;
-        line3 = abs(line2);
-        Txline3 = line3;
+        LocalSpeed = abs(line2);
+        Txline3 = LocalSpeed;
         // Calcul valeur du duty cycle
         SetDCOC2PWM(abs(line2) * ((25 * 80) / 100));
 
@@ -255,8 +262,8 @@ extern "C"
            SetPulseOC3((7000-(ValDegre*10+600))/T3_TICK, 0);
 
             //Transformation de 0 à 180 en -90 à 90
-            line4 = ValDegre - 90;
-            Txline4 = line4;
+            LocalAngle = ValDegre - 90;
+            Txline4 = LocalAngle;
 
         // Marqueur activité
         LED0_W = 0;
